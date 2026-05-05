@@ -16,8 +16,7 @@
 
 1. **Клонирование репозитория (ветка lesta_games)**:
    ```bash
-   git clone -b lesta_games https://github.com
-   cd FastAPI_test_tasks
+   https://github.com/Zheka-m-p/FastAPI_test_tasks.git
    ```
 
 2. **Настройка окружения**:
