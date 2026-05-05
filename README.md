@@ -1,19 +1,89 @@
-# FastAPI Test Tasks
+🌐 FastAPI AVBINVEST(разделение 5D HUB Test Task) 
+URL-сокращатель с асинхронной обработкой
 
-Подборка выполненных тестовых заданий по FastAPI — для разных вакансий и стажировок.
+HTTP-сервис на FastAPI для сокращения URL и асинхронных запросов.
+Сервер запускается по умолчанию: http://127.0.0.1:8080 (порт/хост можно изменить).
 
-## Цель
-Показать навыки работы с фреймворком FastAPI, построения REST API, проектирования моделей и баз данных, асинхронной обработки, написания тестов.
+🚀 Основные функции<br>
+Сокращение длинных URL в уникальные идентификаторы. <br>
+Перенаправление на оригинальный URL по короткой ссылке.<br>
+Асинхронная обработка базы данных (используется SQLAlchemy + aiosqlite).<br>
+RESTful API с автоматической документацией (Swagger доступен по /docs).<br>
+Управление таблицами БД через эндпоинты /create_tables и /drop_tables.<br>
 
-## Структура
-- `test-1/` — [Краткое описание задания]
-- `test-2/` — [Краткое описание задания]
+🛠 Установка и запуск
 
-Каждая папка содержит готовый проект с инструкцией по запуску (см. README внутри).
+1. Клонируйте репозиторий :
+      ```
+    git clone https://github.com/Zheka-m-p/FastAPI_5D_HUB_test_task.git
+   ```
+2. Установите зависимости :
+      ```
+   pip install -r requirements.txt
+   ```
+   
+3. Запустите сервер :
+      ```
+   uvicorn main:app --host 127.0.0.1 --port 8080
+   ```
+   
+📦 Структура проекта
 
-# FastAPI Test Tasks
+```
+FastAPI_5D_HUB_test_task/
+├── main.py              # Основной файл FastAPI-приложения
+├── models.py            # Модели SQLAlchemy (UrlModel)
+├── utils.py             # Утилиты для генерации коротких URL
+├── schemas.py           # Схемы Pydantic для валидации данных
+├── database.py          # Настройка асинхронной БД (SQLite)
+├── requirements.txt     # Зависимости
+├── .gitignore           # Игнорируемые файлы
+└── README.md            # Документация
+   ``` 
+📬 API Endpoints
+1. Создать таблицы БД: 
+POST / /create_tables <br>
+2. Удалить таблицы БД: 
+POST / /drop_tables
+3. Сократить URL: 
+POST /
+4. Получить оригинальный URL: 
+GET / <short_url>
+5. Список всех эндпоинтов: 
+GET /
+6. Асинхронный запрос (в разработке):
+POST / /async-request
 
-Мои тестовые задания. Каждое в своей ветке.
+🧪 Пример использования<br>
+   ```
+# Создать таблицы
+curl -X POST http://127.0.0.1:8080/create_tables
 
-- [Lesta Games](https://github.com/Zheka-m-p/FastAPI_test_tasks/tree/lesta_games)
-- [AVB Invest](https://github.com/Zheka-m-p/FastAPI_test_tasks/tree/avbinvest)
+# Сократить URL
+curl -X POST http://127.0.0.1:8080/ -H "Content-Type: application/json" -d '{"url": "https://example.com"}' 
+
+# Перейти по короткой ссылке
+curl -I http://127.0.0.1:8080/abc123
+```
+
+🛠 Настройки <br>
+Хост/порт : Измените параметры --host и --port при запуске Uvicorn. <br>
+База данных : Используется асинхронный SQLite (urls.db). Хранилище находится в текущей директории. <br>
+
+📄 Зависимости<br>
+
+```
+aiosqlite==0.21.0
+fastapi==0.115.12
+sqlalchemy==2.0.41
+pydantic==2.11.5
+uvicorn==0.34.2
+```
+
+
+📝 Примечания <br>
+Короткие URL генерируются случайным образом (буквы + цифры). <br>
+Асинхронный запрос (пункт 3 ТЗ) пока не реализован. <br>
+
+📄 Лицензия <br>
+MIT License 
