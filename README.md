@@ -1,58 +1,66 @@
-markdown
 # TF-IDF Analyzer for Text Files
 
-![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.115.0-green.svg)
-![License](https://img.shields.io/badge/license-MIT-orange.svg)
+Веб-приложение на FastAPI для быстрого анализа частотности слов в текстовых документах.
 
-Анализатор текстовых файлов с расчетом TF-IDF метрик. Простое FastAPI-приложение для обработки `.txt` документов.
+## 🚀 Как это работает
+1. Вы загружаете файл `.txt` через веб-интерфейс.
+2. Приложение очищает текст и разбивает его на слова.
+3. Происходит расчет метрик:
+   - **TF (Term Frequency)**: количество вхождений слова в текст.
+   - **IDF (Inverse Document Frequency)**: рассчитывается по упрощенной формуле `1 / TF`.
+4. Результаты сортируются по убыванию **IDF** и выводятся в виде таблицы (топ-50 слов).
+
+---
 
 ## 📦 Установка и запуск
 
-1. **Клонирование репозитория**:
+1. **Клонирование репозитория (ветка lesta_games)**:
    ```bash
-   git clone https://github.com/Zheka-m-p/FAST_API_Lesta_Games_test.git
-   cd FAST_API_Lesta_Games_test
-Настройка окружения:
+   git clone -b lesta_games https://github.com
+   cd FastAPI_test_tasks
+   ```
 
-bash
-python -m venv venv
-# Для Windows:
-.\venv\Scripts\activate
-# Для Linux/MacOS:
-source venv/bin/activate
-Установка зависимостей:
+2. **Настройка окружения**:
+   ```bash
+   python -m venv venv
+   # Windows:
+   .\venv\Scripts\activate
+   # Linux/MacOS:
+   source venv/bin/activate
+   ```
 
-```bash
-    pip install -r requirements.txt
+3. **Установка зависимостей**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Запуск сервера**:
+   ```bash
+   uvicorn main:app --reload
+   ```
+   После запуска откройте в браузере: [http://localhost:8000](http://localhost:8000)
+
+---
+
+## 📂 Структура проекта
+```text
+├── main.py            # Логика обработки текста и маршруты FastAPI
+├── templates/         # UI часть (Jinja2 шаблоны)
+│   └── index.html     # Страница загрузки и таблица результатов
+├── requirements.txt   # Зависимости (FastAPI, Uvicorn, Jinja2, python-multipart)
+└── README.md
 ```
-Запуск приложения:
 
-```bash
-    uvicorn main:app --reload
-```
-Приложение доступно по адресу: http://localhost:8000
+---
 
-🛠️ Функционал <br>
-* Загрузка текстовых файлов (.txt)
-* Расчет метрик:
-* TF (Term Frequency) - частота слова
-* IDF (Inverse Document Frequency) - 1/TF (упрощенная формула)
-* Сортировка по убыванию IDF
-* Вывод топ-50 слов в таблице
+## 🛠 Технологии
+*   **Backend:** FastAPI
+*   **Frontend:** Jinja2 (HTML шаблоны)
+*   **Инструменты:** Python `re`, `collections`
 
+---
 
-## Структура проекта
-FAST_API_Lesta_Games_test/
-
-├── main.py   
-├── requirements.txt    
-├── templates/          
-│   └── index.html      
-├── README.md         
-└── .gitignore         
-
-
-
-📜 Лицензия
-MIT License
+## 📝 Особенности реализации
+- **Препроцессинг:** Текст приводится к нижнему регистру, слова извлекаются с помощью регулярных выражений (только буквы и цифры).
+- **Логика IDF:** В данном приложении используется упрощенная версия формулы Inverse Document Frequency (`1/TF`), что позволяет оценить уникальность слова в рамках одного документа.
+- **Ограничение:** Для сохранения читаемости интерфейс выводит только 50 наиболее редких слов.
