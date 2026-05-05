@@ -1,19 +1,58 @@
-# FastAPI Test Tasks
+markdown
+# TF-IDF Analyzer for Text Files
 
-Подборка выполненных тестовых заданий по FastAPI — для разных вакансий и стажировок.
+![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115.0-green.svg)
+![License](https://img.shields.io/badge/license-MIT-orange.svg)
 
-## Цель
-Показать навыки работы с фреймворком FastAPI, построения REST API, проектирования моделей и баз данных, асинхронной обработки, написания тестов.
+Анализатор текстовых файлов с расчетом TF-IDF метрик. Простое FastAPI-приложение для обработки `.txt` документов.
 
-## Структура
-- `test-1/` — [Краткое описание задания]
-- `test-2/` — [Краткое описание задания]
+## 📦 Установка и запуск
 
-Каждая папка содержит готовый проект с инструкцией по запуску (см. README внутри).
+1. **Клонирование репозитория**:
+   ```bash
+   git clone https://github.com/Zheka-m-p/FAST_API_Lesta_Games_test.git
+   cd FAST_API_Lesta_Games_test
+Настройка окружения:
 
-# FastAPI Test Tasks
+bash
+python -m venv venv
+# Для Windows:
+.\venv\Scripts\activate
+# Для Linux/MacOS:
+source venv/bin/activate
+Установка зависимостей:
 
-Мои тестовые задания. Каждое в своей ветке.
+```bash
+    pip install -r requirements.txt
+```
+Запуск приложения:
 
-- [Lesta Games](https://github.com/Zheka-m-p/FastAPI_test_tasks/tree/lesta_games)
-- [AVB Invest](https://github.com/Zheka-m-p/FastAPI_test_tasks/tree/avbinvest)
+```bash
+    uvicorn main:app --reload
+```
+Приложение доступно по адресу: http://localhost:8000
+
+🛠️ Функционал <br>
+* Загрузка текстовых файлов (.txt)
+* Расчет метрик:
+* TF (Term Frequency) - частота слова
+* IDF (Inverse Document Frequency) - 1/TF (упрощенная формула)
+* Сортировка по убыванию IDF
+* Вывод топ-50 слов в таблице
+
+
+## Структура проекта
+FAST_API_Lesta_Games_test/
+
+├── main.py   
+├── requirements.txt    
+├── templates/          
+│   └── index.html      
+├── README.md         
+└── .gitignore         
+
+
+
+📜 Лицензия
+MIT License

@@ -1,31 +1,24 @@
-# Virtual environments
+# Python
+__pycache__/
+*.py[cod]
+*.py~
 venv/
 .venv/
-env/
-.env/
-
-# Python cache
-__pycache__/
-*.pyc
-*.pyo
-
-# Environment variables
 .env
-.env.*
+evn/
 
-# IDE settings
-.idea/
-.vscode/
+# FastAPI
 *.swp
-*.swo
-
-# OS junk
 .DS_Store
-Thumbs.db
 
-# Testing
-.pytest_cache/
+# Логи и кэш
+*.log
+.cache
 
-# Database
-*.db
-*.sqlite3
+# IDE
+.vscode/
+.idea/
+
+# Временные файлы
+temp/
+tmp/

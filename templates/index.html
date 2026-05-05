@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Анализатор TF-IDF</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .file-info { margin: 10px 0; color: green; }
+    </style>
+</head>
+<body>
+    <h1>Анализатор TF-IDF</h1>
+    <form method="post" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".txt" required>
+        <button type="submit">Анализировать</button>
+    </form>
+
+    {% if filename %}
+        <div class="file-info">Анализ файла: {{ filename }}</div>
+    {% endif %}
+
+    {% if results %}
+        <h2>Результаты (топ-50 по IDF):</h2>
+        <table>
+            <tr>
+                <th>Слово</th>
+                <th>TF</th>
+                <th>IDF (1/TF)</th>
+            </tr>
+            {% for item in results %}
+            <tr>
+                <td>{{ item.word }}</td>
+                <td>{{ item.tf }}</td>
+                <td>{{ "%.4f"|format(item.idf) }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>
